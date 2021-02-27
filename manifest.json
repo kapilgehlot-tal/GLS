@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "GLS",
+    "version": "1.0.0",
+    "description": "Minified guided learning solution",
+    "short_name": "Guided learning frontend engine",
+    "permissions": ["activeTab", "declarativeContent","storage"],
+    "content_scripts": [
+      {
+        "matches": ["https://*.google.com/*","https://*.google.co.in/*"],
+        "js": ["jquery.js","player.js"],
+        "css" : ["player.css"]
+      }
+    ],
+    "browser_action": {
+      "default_title": "Guided learning frontend engine"
+    }
+   }
