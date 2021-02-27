@@ -74,7 +74,7 @@ function getGuideData(guideData) {
     </div>
     </div>`;
 
-  $("body").appendChild(template);
+  $("body").append(template);
 
   $(".gb_g:contains('Images')").on("click", () => {
     nextStep();
@@ -149,7 +149,7 @@ function nextStep() {
 */
 function prevStep() {
   // if in case of less than 1st step
-  if (stepCount < 0) {
+  if (stepCount <= 0) {
     chrome.storage.sync.set({ step: 0 }, () => {
       console.log("Value is set to  0");
     });
