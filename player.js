@@ -1,3 +1,8 @@
+"use strict";
+
+let steps;
+let stepCount = 0;
+
 function getGuideData(guideData) {
   const template = document.createElement("div");
   template.style = "position:absolute;top:100px;right:25%";
@@ -11,10 +16,49 @@ function getGuideData(guideData) {
     </div>`;
 
   document.body.appendChild(template); // need to change to $
+
+  $(document).on("click", ".next-btn", function () {
+    nextStep();
+  });
+
+  $(document).on("click", ".prev-btn", function () {
+    prevStep();
+  });
 }
 
 /*
-JSONP for guide steps
+    Next step guild on click on next button
+*/
+function nextStep() {
+  // if in case of last step
+  if (stepCount >= steps.length) {
+    return;
+  }
+
+  stepCount++;
+
+  $("span[data-iridize-role='stepCount']").html(stepCount + 1);
+}
+
+/*
+    Previous step guild on click on back button
+*/
+function prevStep() {
+  // if in case of less than 1st step
+  if (stepCount < 0) {
+    chrome.storage.sync.set({ step: 0 }, function () {
+      console.log("Value is set to  0");
+    });
+    return;
+  }
+
+  stepCount--;
+
+  $("span[data-iridize-role='stepCount']").html(stepCount + 1);
+}
+
+/*
+    JSONP for guide steps
 */
 getGuideData({
   success: 1,
