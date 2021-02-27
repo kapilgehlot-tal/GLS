@@ -62,7 +62,7 @@ function getGuideData(guideData) {
 
     $(".main-div").css("position", "absolute");
   });
-  
+
   const template = document.createElement("div");
   template.style = "position:absolute;top:100px;right:25%";
   template.className = "main-div";
@@ -76,12 +76,22 @@ function getGuideData(guideData) {
 
   document.body.appendChild(template); // need to change to $
 
+  $(".gb_g:contains('Images')").on("click", () => {
+    nextStep();
+  });
+
   $(document).on("click", ".next-btn", function () {
     nextStep();
   });
 
   $(document).on("click", ".prev-btn", function () {
     prevStep();
+  });
+
+  $("[name='q'").on("keypress", function (e) {
+    if (e.which == 13) {
+      nextStep();
+    }
   });
 }
 
@@ -97,6 +107,41 @@ function nextStep() {
   stepCount++;
 
   $("span[data-iridize-role='stepCount']").html(stepCount + 1);
+
+  chrome.storage.sync.set({ step: stepCount }, function () {
+    console.log("Value is set to " + stepCount);
+  });
+
+  const nextStepContent = steps[stepCount].action.contents;
+
+  if (steps[stepCount].action.type === "closeScenario") {
+    $(".popover-content").html("Thank you !!!");
+  }
+
+  if (!nextStepContent) {
+    chrome.storage.sync.set({ step: 0 }, function () {
+      console.log("Value is set to  0");
+    });
+    return;
+    // some action
+  }
+
+  $(".popover-content").html(nextStepContent["#content"]);
+
+  if (steps[stepCount]?.action?.selector) {
+    $(steps[stepCount]?.action?.selector).css({
+      "border-style": "solid",
+      "border-color": "red",
+    });
+  }
+
+  if (steps[stepCount]?.action?.roleTexts?.nextBt) {
+    $(".next-btn").text(steps[stepCount]?.action?.roleTexts?.nextBt);
+  } else {
+    $(".next-btn").text("Next");
+  }
+
+  common();
 }
 
 /*
@@ -114,6 +159,62 @@ function prevStep() {
   stepCount--;
 
   $("span[data-iridize-role='stepCount']").html(stepCount + 1);
+
+  chrome.storage.sync.set({ step: stepCount }, function () {
+    console.log("Value is set to " + stepCount);
+  });
+
+  if (steps[stepCount].action.type === "closeScenario") {
+    $(".popover-content").html("Thank you !!!");
+  }
+
+  const nextStep = steps[stepCount].action.contents;
+
+  if (steps[stepCount]?.action?.roleTexts?.nextBt) {
+    $(".next-btn").text(steps[stepCount]?.action?.roleTexts?.nextBt);
+  } else {
+    $(".next-btn").text("Next");
+  }
+
+  if (!nextStep) {
+    chrome.storage.sync.set({ step: 0 }, function () {
+      console.log("Value is set to  0");
+    });
+    return;
+    // some action
+  }
+
+  $(".popover-content").html(nextStep["#content"]);
+  
+  common();
+}
+
+/*
+    common code for Previous and Next step
+*/
+function common() {
+  const placement = steps[stepCount].action.placement;
+  $(".main-div").removeAttr("style");
+
+  const classes = steps[stepCount].action.classes.split(" ");
+
+  if (classes.includes("showPrevBt")) {
+    $("div.sttip div.tooltip").addClass("showPrevBt");
+  }
+
+  if (classes.includes("hideNextBt")) {
+    $("div.sttip div[data-iridize-role='nextBtPane']").addClass("hideNextBt");
+  }
+
+
+  if (placement === "right") {
+    $(".main-div").css({ right: "25%", top: "100px" });
+  }
+
+  if (placement === "bottom") {
+    $(".main-div").css({ bottom: "300px", right: "25%" });
+  }
+  $(".main-div").css("position", "absolute");
 }
 
 /*
