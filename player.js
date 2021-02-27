@@ -4,6 +4,65 @@ let steps;
 let stepCount = 0;
 
 function getGuideData(guideData) {
+  chrome.storage.sync.get(["step"], function (result) {
+    stepCount = result.step || 0;
+    if (stepCount < 0) {
+      chrome.storage.sync.set({ step: 0 }, function () {
+        console.log("Value is set to  0");
+      });
+      stepCount = 0;
+    }
+
+    steps = guideData.data.structure.steps;
+
+    const hoverTip = guideData.data.tiplates.hoverTip;
+    $(".popover-inner").html(hoverTip);
+    const tip = guideData.data.tiplates.tip;
+
+    console.log(guideData.data);
+    console.log(steps);
+    console.log(hoverTip);
+    console.log(tip);
+
+    $("span[data-iridize-role='stepCount']").html(stepCount + 1);
+    $("span[data-iridize-role='stepsCount']").html(steps.length);
+
+    const welcomeStep = steps[stepCount].action.contents;
+
+    $(".popover-content").html(welcomeStep["#content"]);
+
+    const placement = steps[stepCount].action.placement;
+
+    $(".main-div").removeAttr("style");
+
+    const classes = steps[stepCount].action.classes.split(" ");
+
+    if (steps[stepCount]?.action?.selector) {
+      $(steps[stepCount]?.action?.selector).css({
+        "border-style": "solid",
+        "border-color": "red",
+      });
+    }
+
+    if (classes.includes("showPrevBt")) {
+      $("div.sttip div.tooltip").addClass("showPrevBt");
+    }
+
+    if (classes.includes("hideNextBt")) {
+      $("div.sttip div[data-iridize-role='nextBtPane']").addClass("hideNextBt");
+    }
+
+    if (placement === "right") {
+      $(".main-div").css({ right: "25%", top: "100px" });
+    }
+
+    if (placement === "bottom") {
+      $(".main-div").css({ bottom: "300px", right: "25%" });
+    }
+
+    $(".main-div").css("position", "absolute");
+  });
+  
   const template = document.createElement("div");
   template.style = "position:absolute;top:100px;right:25%";
   template.className = "main-div";
