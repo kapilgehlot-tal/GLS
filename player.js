@@ -4,7 +4,7 @@ let steps;
 let stepCount = 0;
 
 function getGuideData(guideData) {
-  chrome.storage.sync.get(["step"], function (result) {
+  chrome.storage.sync.get(["step"], (result) => {
     stepCount = result.step || 0;
     if (stepCount < 0) {
       chrome.storage.sync.set({ step: 0 }, function () {
@@ -74,21 +74,21 @@ function getGuideData(guideData) {
     </div>
     </div>`;
 
-  document.body.appendChild(template); // need to change to $
+  $("body").appendChild(template);
 
   $(".gb_g:contains('Images')").on("click", () => {
     nextStep();
   });
 
-  $(document).on("click", ".next-btn", function () {
+  $(document).on("click", ".next-btn", () => {
     nextStep();
   });
 
-  $(document).on("click", ".prev-btn", function () {
+  $(document).on("click", ".prev-btn", () => {
     prevStep();
   });
 
-  $("[name='q'").on("keypress", function (e) {
+  $("[name='q'").on("keypress", (e) => {
     if (e.which == 13) {
       nextStep();
     }
@@ -108,7 +108,7 @@ function nextStep() {
 
   $("span[data-iridize-role='stepCount']").html(stepCount + 1);
 
-  chrome.storage.sync.set({ step: stepCount }, function () {
+  chrome.storage.sync.set({ step: stepCount }, () => {
     console.log("Value is set to " + stepCount);
   });
 
@@ -150,7 +150,7 @@ function nextStep() {
 function prevStep() {
   // if in case of less than 1st step
   if (stepCount < 0) {
-    chrome.storage.sync.set({ step: 0 }, function () {
+    chrome.storage.sync.set({ step: 0 }, () => {
       console.log("Value is set to  0");
     });
     return;
@@ -177,7 +177,7 @@ function prevStep() {
   }
 
   if (!nextStep) {
-    chrome.storage.sync.set({ step: 0 }, function () {
+    chrome.storage.sync.set({ step: 0 }, () => {
       console.log("Value is set to  0");
     });
     return;
@@ -185,7 +185,7 @@ function prevStep() {
   }
 
   $(".popover-content").html(nextStep["#content"]);
-  
+
   common();
 }
 
@@ -205,7 +205,6 @@ function common() {
   if (classes.includes("hideNextBt")) {
     $("div.sttip div[data-iridize-role='nextBtPane']").addClass("hideNextBt");
   }
-
 
   if (placement === "right") {
     $(".main-div").css({ right: "25%", top: "100px" });
