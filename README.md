@@ -12,3 +12,5 @@ GLS is chrome extension which can run on google.com / google.co.in and help to g
 3. Click on Load unpacked button
 4. Select project folder and hit open/select button
 5. Here we go !! GLS installation is done.
+
+## Running the app
