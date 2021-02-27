@@ -1,5 +1,16 @@
 function getGuideData(guideData) {
-  console.log(guideData);
+  const template = document.createElement("div");
+  template.style = "position:absolute;top:100px;right:25%";
+  template.className = "main-div";
+  template.innerHTML = `<div  class="sttip">
+    <div class="tooltip in">
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-arrow second-arrow"></div>
+      <div class="popover-inner"></div>
+    </div>
+    </div>`;
+
+  document.body.appendChild(template); // need to change to $
 }
 
 /*
