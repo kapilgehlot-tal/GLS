@@ -43,7 +43,7 @@ Assuning GLS chrome installation is already done.
 ![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest1.png?alt=media&token=5dc060d1-02f8-4948-897b-f33534d80baa)
 
 #### Test #2
-- After Test #1 you will see "Click Images to go to imagessection" tip on top right corner of google home page.
+- After Test #1 you will see "Click Images to go to images section" tip on top right corner of google home page.
 - You can see step counter and Back Button.
 - Click on Images link.
 
