@@ -37,10 +37,17 @@ Assuning GLS chrome installation is already done.
 #### Test #1
 - Hit www.google.com in chrome browser.
 - You will see "Welcome to Google" tip on the google home page".
-- You can see Step counter as well as Next Button.
-- Hit Next Button.
+- You can see step counter as well as Next Button.
+- Click Next Button.
 
 ![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest1.png?alt=media&token=5dc060d1-02f8-4948-897b-f33534d80baa)
+
+#### Test #2
+- After Test #1 you will see "Click Images to go to imagessection" tip on top right corner of google home page.
+- You can see step counter as well as Next Button.
+- Click Next button
+
+![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest2.png?alt=media&token=5efec499-d864-49f8-bcd7-31bdec4019c1)
 
 
 
