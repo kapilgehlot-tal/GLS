@@ -13,11 +13,11 @@ template.innerHTML = `<div class="sttip">
   </div>
   </div>`;
 
-function removeTipClassess(){
-    $("div.sttip .tooltip").removeClass("top");
-    $("div.sttip .tooltip").removeClass("right");
-    $("div.sttip .tooltip").removeClass("left");
-    $("div.sttip .tooltip").removeClass("bottom");
+function removeTipClassess() {
+  $("div.sttip .tooltip").removeClass("top");
+  $("div.sttip .tooltip").removeClass("right");
+  $("div.sttip .tooltip").removeClass("left");
+  $("div.sttip .tooltip").removeClass("bottom");
 }
 
 function getGuideData(guideData) {
@@ -43,11 +43,6 @@ function getGuideData(guideData) {
     $(".popover-inner").html(hoverTip);
     const tip = guideData.data.tiplates.tip;
 
-    console.log(guideData.data);
-    console.log(steps);
-    console.log(hoverTip);
-    console.log(tip);
-
     $("span[data-iridize-role='stepCount']").html(stepCount + 1);
     $("span[data-iridize-role='stepsCount']").html(steps.length);
 
@@ -67,6 +62,8 @@ function getGuideData(guideData) {
     if (classes.includes("hideNextBt")) {
       $("div.sttip div[data-iridize-role='nextBtPane']").addClass("hideNextBt");
     }
+
+    $("[data-iridize-role='closeBt']").hide();
   });
 
   $(".gb_g:contains('Images')").on("click", () => {
@@ -87,7 +84,10 @@ function getGuideData(guideData) {
     }
   });
 
-  //$("[data-iridize-role='closeBt'])
+  $(document).on("click", "[data-iridize-role='closeBt']", () => {
+    $('#main-div').hide();
+  });
+
 }
 
 /*
@@ -112,6 +112,7 @@ function nextStep() {
   const nextStepContent = action.contents;
 
   if (action.type === "closeScenario") {
+    $("[data-iridize-role='closeBt']").show();
     $(".popover-content").html("Thank you !!!");
   }
 
@@ -185,11 +186,8 @@ function prevStep() {
     common code for Previous and Next step
 */
 function common() {
-
   const action = steps[stepCount].action;
   const placement = action.placement;
-
-
 
   if (!Object.keys($(action.selector)).length) {
     $("body").append(template);
@@ -200,7 +198,7 @@ function common() {
   removeTipClassess();
   $("div.sttip .tooltip").addClass(placement);
 
-  $('#main-div').removeClass();
+  $("#main-div").removeClass();
   $("#main-div").addClass(`step${stepCount}`);
 
   const classes = action.classes.split(" ");
@@ -212,9 +210,6 @@ function common() {
   if (classes.includes("hideNextBt")) {
     $("div.sttip div[data-iridize-role='nextBtPane']").addClass("hideNextBt");
   }
-
-
-
 }
 
 /*

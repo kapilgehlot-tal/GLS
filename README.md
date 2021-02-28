@@ -32,6 +32,17 @@ Step #5
 
 ## Running the app
 
+Assuning GLS chrome installation is already done.
+
+1. Test #1
+    a. Hit www.google.com in chrome browser.
+    b. You will see "Welcome to Google" tip on the google home page".
+    c. You can see Step counter as well as Next Button.
+    d. Hit Next Button.
+
+![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest1.png?alt=media&token=5dc060d1-02f8-4948-897b-f33534d80baa)
+
+
 
 
 
