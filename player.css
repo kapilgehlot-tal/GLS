@@ -2920,7 +2920,7 @@ animation: spin 2s linear infinite;
 
 .step1{
     position: absolute;
-    right: 19%;
+    right: 21%;
     z-index: 999;
 }
 

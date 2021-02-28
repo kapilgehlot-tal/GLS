@@ -35,10 +35,10 @@ Step #5
 Assuning GLS chrome installation is already done.
 
 #### Test #1
-- Hit www.google.com in chrome browser.
+- Visit www.google.com in chrome browser.
 - You will see "Welcome to Google" tip on the google home page".
 - You can see step counter as well as Next Button.
-- Click Next Button.
+- Click on Next Button.
 
 ![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest1.png?alt=media&token=5dc060d1-02f8-4948-897b-f33534d80baa)
 
@@ -58,7 +58,7 @@ Assuning GLS chrome installation is already done.
 
 #### Test #4
 - If you don't want to search images then click on Next Button instead of hit ENTER !! and go to google.com again.
-- You can see step counter as well Back , Done button and "Click here to search" tip
+- You can see step counter as well Back , Done button and "Click here to search" tip.
 - Enter any query to search data (Ex- Sachin) or you can click "Done" button to complete the guide.
 - After click on DONE button you can see "Thank you !!!" tip with close button to close the guide.
 
