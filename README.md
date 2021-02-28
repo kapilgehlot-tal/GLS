@@ -56,8 +56,21 @@ Assuning GLS chrome installation is already done.
 
 ![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest3.png?alt=media&token=2d97887c-c70c-4b3b-a55e-181ce534eb65)
 
+#### Test #4
+- If you don't want to search images then click on Next Button instead of hit ENTER !! and go to google.com again.
+- You can see step counter as well Back , Done button and "Click here to search" tip
+- Enter any query to search data (Ex- Sachin) or you can click "Done" button to complete the guide.
+- After click on DONE button you can see "Thank you !!!" tip with close button to close the guide.
+
+![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest4.png?alt=media&token=3abe6744-a51c-433c-881f-2411b504a28f)
 
 
+![alt text](https://firebasestorage.googleapis.com/v0/b/mlv-cakes-and-pizzas.appspot.com/o/sample%2Ftest_cases%2Ftest5.png?alt=media&token=b6d989c6-a01b-40d2-b377-f80fe0ec76ef)
+
+
+#### Test #5
+
+- You can go back to see previos steps if Back button available.
 
 
 
