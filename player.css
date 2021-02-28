@@ -1635,6 +1635,7 @@ div.sttip div.tooltip.top div.tooltip-arrow.second-arrow {
  border-left: 8px inset transparent;
  border-right: 8px inset transparent;
  margin-left: -13px;
+ color: red;
 }
 
 div.sttip div.tooltip.right {

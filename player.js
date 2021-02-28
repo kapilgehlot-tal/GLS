@@ -33,6 +33,8 @@ function getGuideData(guideData) {
 
     const placement = steps[stepCount].action.placement;
 
+    $('div.sttip .tooltip').addClass(placement);
+
     $(".main-div").removeAttr("style");
 
     const classes = steps[stepCount].action.classes.split(" ");
@@ -194,6 +196,7 @@ function prevStep() {
 */
 function common() {
   const placement = steps[stepCount].action.placement;
+  $('div.sttip .tooltip').addClass(placement);
   $(".main-div").removeAttr("style");
 
   const classes = steps[stepCount].action.classes.split(" ");
